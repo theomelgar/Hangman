@@ -1,0 +1,24 @@
+.Jogo{
+    width: 900px;
+    height: 650px;
+    margin: 50px 20px;
+    position: relative;
+}
+.forca{
+    
+    
+
+}
+
+.escolher{
+    position: fixed;
+    right: 230px;
+    top: 70px;
+    width: auto;
+    height: 40px;
+    font-size: 30px;
+    padding: 0 20px;
+    background-color: rgb(35, 231, 35);
+    color: white;
+    margin-top: 30px;
+}
