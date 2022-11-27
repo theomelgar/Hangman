@@ -17,19 +17,21 @@ function App() {
   const forca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
   const [erros, setErros] = useState(0)
   const [palavra, setPalavrva] = useState("")
-  const [chutar,setChutar] = useState("")
+  const [chutar, setChutar] = useState("")
   const [letrasEscolhidas, setLetrasEscolhidas] = useState(false)
   const [underline, setUnderline] = useState("")
   const [block, setBlock] = useState(true)
-  const [comeco,setComeco] = useState(false)
+  const [comeco, setComeco] = useState(false)
   const [fim, setFim] = useState(false)
 
-  
+
   const jogo = {
-    estagio:forca[erros],
+    estagio: forca[erros],
     erros,
     palavra,
+    comeco,setComeco,
     underline,
+    fim,setFim,
     setChutar,
     setUnderline,
     setLetrasEscolhidas,
@@ -37,9 +39,13 @@ function App() {
     setErros
   }
   const letras = {
+    letrasEscolhidas, setLetrasEscolhidas,
+    block,setBlock,
+    comeco, fim
+
 
   }
-  const chute = {chutar,setChutar}
+  const chute = { chutar, setChutar, palavra, setErros, underline, setComeco,comeco }
   return (
 
     <>
