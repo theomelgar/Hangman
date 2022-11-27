@@ -14,6 +14,9 @@ import Letras from "./components/Letras"
 import styled from "styled-components"
 
 function App() {
+  function padraoLetras(palavra) {
+    return palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, "");
+  }
   const forca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
   const [erros, setErros] = useState(0)
   const [palavra, setPalavrva] = useState("")
@@ -27,25 +30,33 @@ function App() {
 
   const jogo = {
     estagio: forca[erros],
-    erros,
-    palavra,
-    comeco,setComeco,
-    underline,
-    fim,setFim,
-    setChutar,
-    setUnderline,
+    erros, setErros,
+    palavra, setPalavrva,
+    comeco, setComeco,
+    underline, setUnderline,
     setLetrasEscolhidas,
-    setPalavrva,
-    setErros
+    fim, setFim,
+    setComeco,
+    setChutar,
+    setLetrasEscolhidas
   }
   const letras = {
     letrasEscolhidas, setLetrasEscolhidas,
-    block,setBlock,
-    comeco, fim
-
-
+    block, setBlock,
+    fim,
+    padraoLetras,
+    palavra,
+    underline, setUnderline,
+    comeco, setComeco,
+    erros, setErros,
   }
-  const chute = { chutar, setChutar, palavra, setErros, underline, setComeco,comeco }
+  const chute = {
+    chutar, setChutar,
+    palavra, setErros,
+    underline, setUnderline,
+    setComeco, comeco,
+    padraoLetras
+  }
   return (
 
     <>
