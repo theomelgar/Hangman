@@ -18,8 +18,8 @@ function App() {
     return palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, "");
   }
   const forca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
-  const [erros, setErros] = useState(0)
-  const [palavra, setPalavrva] = useState("")
+  const [erros, setErros] = useState(3)
+  const [palavra, setPalavra] = useState("")
   const [chutar, setChutar] = useState("")
   const [letrasEscolhidas, setLetrasEscolhidas] = useState([])
   const [underline, setUnderline] = useState("")
@@ -31,7 +31,7 @@ function App() {
   const jogo = {
     forca,
     erros, setErros,
-    palavra, setPalavrva,
+    palavra, setPalavra,
     comeco, setComeco,
     underline, setUnderline,
     setLetrasEscolhidas,
@@ -41,7 +41,7 @@ function App() {
   const letras = {
     letrasEscolhidas, setLetrasEscolhidas,
     block, setBlock,
-    fim,
+    fim,setFim,
     padraoLetras,
     palavra,
     underline, setUnderline,

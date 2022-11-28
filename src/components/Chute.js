@@ -3,7 +3,13 @@ import styled from "styled-components"
 export default function Chute(props) {
 
     function chutarPalavra(e) {
-        props.chute.setChutar(e.target.value);
+        let chute=props.chute.setChutar(e.target.value);
+        verifica(chute)
+    }
+    function verifica(chute){
+        if(chute===props.chutar.palavra){
+            props.chutar.setComeco(false)
+        }
     }
     const chuteInativo = props.chute.underline === props.chute.palavra;
     return (
@@ -65,5 +71,11 @@ const ChuteDiv = styled.div`
         line-height: 19px;
         text-align: center;
         color: #3C76A1;
+        &:disabled{
+            border: 1px solid #7aa7c7;
+            color: #798a9f;
+            cursor: default;
+            background: #9faab5;
+        }
     }
 `

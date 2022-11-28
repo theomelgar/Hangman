@@ -1,27 +1,65 @@
 import styled from "styled-components"
+import { useState } from "react"
 
 export default function Letras(props) {
-    const letraSelecionada = props.letras.letrasEscolhida
+    const pLetras = props.letras
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     const letras = alfabeto.map((l) => (
         {
             key: l,
             letra: l.toUpperCase(),
-            bloqueada:letraSelecionada
+            bloqueada: pLetras.letrasEscolhidas.includes(l),
+            jogada: () => jogada(l)
         }))
 
+    function jogada(letra) {
+        pLetras.setLetrasEscolhidas([...pLetras.letrasEscolhidas, letra])
+        const listaPalavras = pLetras.padraoLetras(pLetras.palavra).split('')
+        const acerto = listaPalavras.indexOf(letra) !== -1
+        const palavraOcultaLista = pLetras.underline.split('')
+        const palavraOcultaNova = acerto ? revelarLetras(letra, listaPalavras, palavraOcultaLista).join('') : pLetras.underline
+        if (acerto) {
+            pLetras.setUnderline(palavraOcultaNova)
+        } else {
+            const maxErros = 6
+            const novoErro = pLetras.erros + 1
+            pLetras.setErros(novoErro)
+            if (novoErro === maxErros) {
+                pLetras.setUnderline(pLetras.palavra)
+                pLetras.setComeco(false)
+            }
+        }
+        winCondition(palavraOcultaNova)
+    }
+    function revelarLetras(letra, palavraLista, palavraListaOculta) {
+        while (palavraLista.indexOf(letra) !== -1) {
+            const index = palavraLista.indexOf(letra)
+            palavraListaOculta[index] = pLetras.palavra[index]
+            palavraLista[index] = "_"
+            pLetras.setFim(true)
+        }
+        return palavraListaOculta;
+    }
+
+
+    function winCondition(oculta) {
+        if (oculta === pLetras.palavra) {
+            pLetras.setUnderline(pLetras.palavra)
+            pLetras.setComeco(false)
+            pLetras.setFim(true)
+        }
+    }
     return (
         <LetrasDiv>
             {letras.map((letra) => {
-                const letraInativa = !(props.letras.fim) ? true : letra.bloqueada;
+                const letraInativa = !(pLetras.comeco) ? true : letra.bloqueada
                 return (
                     <LetraButao
-                        data-test="letter"
                         key={letra.letra}
                         onClick={letra.jogada}
                         disabled={letraInativa}
                     >
-                        {letra.letra}
+                    {letra.letra}
                     </LetraButao>
                 )
             })}
