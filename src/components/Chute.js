@@ -2,26 +2,24 @@ import styled from "styled-components"
 
 export default function Chute(props) {
     const pChute = props.chute
-    function chutarPalavra(e) {
-        let chute=pChute.setChutar(e.target.value);
-        verifica(chute)
-    }
-    function verifica(chute){
-        if(chute===props.chutar.palavra){
-            props.chutar.setComeco(false)
+    const chuteInativo = pChute.underline === pChute.palavra;
+
+    function verifica(chute) {
+        pChute.pradonizarLetra(pChute.palavra).toUpperCase()
+        if (chute === pChute.palavra) {
+            pChute.setComeco(false)
         }
     }
-    const chuteInativo = pChute.underline === pChute.palavra;
     return (
         <ChuteDiv>
             <span>Já sei a palavra!</span>
             <input
                 type="text"
-                onChange={chutarPalavra}
+                onChange={(e)=> pChute.setChutar(e.target.value)}
                 value={pChute.chutar}
                 disabled={chuteInativo}
             />
-            <button onClick={chutarPalavra}>Chutar</button>
+            <button onClick={verifica} disabled={chuteInativo}>Chutar</button>
         </ChuteDiv>
     )
 }

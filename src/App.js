@@ -1,6 +1,5 @@
 import Jogo from "./components/Jogo"
 import GLobalStyle from "./styles/GlobalStyle"
-import Palavras from "./palavras"
 import forca0 from "./assets/forca0.png"
 import forca1 from "./assets/forca1.png"
 import forca2 from "./assets/forca2.png"
@@ -14,7 +13,7 @@ import Letras from "./components/Letras"
 import styled from "styled-components"
 
 function App() {
-  function padraoLetras(palavra) {
+  function padronizarLetras(palavra) {
     return palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, "");
   }
   const forca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
@@ -42,7 +41,7 @@ function App() {
     letrasEscolhidas, setLetrasEscolhidas,
     block, setBlock,
     fim,setFim,
-    padraoLetras,
+    padronizarLetras,
     palavra,
     underline, setUnderline,
     comeco, setComeco,
@@ -53,16 +52,18 @@ function App() {
     palavra, setErros,
     underline, setUnderline,
     setComeco, comeco,
-    padraoLetras
+    padronizarLetras
   }
   return (
 
-    <>
+    <AppDiv>
       <GLobalStyle />
       <Jogo jogo={jogo} />
       <Letras letras={letras}></Letras>
       <Chute chute={chute}></Chute>
-    </>)
+    </AppDiv>)
 }
-
+const AppDiv=styled.div`
+  width: 100%;
+`
 export default App;

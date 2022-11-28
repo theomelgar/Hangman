@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { useState } from "react"
 
 export default function Letras(props) {
     const pLetras = props.letras
