@@ -25,7 +25,7 @@ function App() {
   const [block, setBlock] = useState(true)
   const [comeco, setComeco] = useState(false)
   const [fim, setFim] = useState(false)
-
+  const erroLimite = 6
 
   const jogo = {
     forca,
@@ -35,7 +35,7 @@ function App() {
     underline, setUnderline,
     setLetrasEscolhidas,
     fim, setFim,
-    setChutar,
+    setChutar,erroLimite
   }
   const letras = {
     letrasEscolhidas, setLetrasEscolhidas,
@@ -45,14 +45,14 @@ function App() {
     palavra,
     underline, setUnderline,
     comeco, setComeco,
-    erros, setErros,
+    erros, setErros,erroLimite
   }
   const chute = {
     chutar, setChutar,
     palavra, setErros,
     underline, setUnderline,
     setComeco, comeco,
-    padronizarLetras
+    padronizarLetras,erroLimite
   }
   return (
 

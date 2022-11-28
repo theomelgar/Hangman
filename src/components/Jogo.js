@@ -4,7 +4,6 @@ import styled from "styled-components"
 
 export default function Jogo(props) {
     const pJogo = props.jogo
-    const errosMax = 6
     function escolherPalavra() {
         const nova = palavras[Math.floor(Math.random() * palavras.length)]
         pJogo.setPalavra(nova)
@@ -46,7 +45,7 @@ export default function Jogo(props) {
             {pJogo.underline}
         </Errado>
     );
-    const palavraCorreta = pJogo.erros === errosMax ? errado : certo
+    const palavraCorreta = pJogo.erros === pJogo.erroLimite ? errado : certo
     const acabou = pJogo.palavra === pJogo.underline ? palavraCorreta : jogando
     return (
         <>

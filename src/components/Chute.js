@@ -4,18 +4,25 @@ export default function Chute(props) {
     const pChute = props.chute
     const chuteInativo = pChute.underline === pChute.palavra;
 
-    function verifica(chute) {
-        pChute.pradonizarLetra(pChute.palavra).toUpperCase()
-        if (chute === pChute.palavra) {
-            pChute.setComeco(false)
+    function verifica() {
+        const palavraSelecionada = pChute.padronizarLetras(pChute.palavra).toUpperCase()
+        const palavraChute = pChute.padronizarLetras(pChute.chutar).toUpperCase()
+        if (palavraChute === palavraSelecionada) {
+
         }
+        else { 
+            pChute.setErros(pChute.erroLimite)
+        }
+        pChute.setComeco(false)
+        pChute.setChutar("")
+        pChute.setUnderline(pChute.palavra)
     }
     return (
         <ChuteDiv>
             <span>Já sei a palavra!</span>
             <input
                 type="text"
-                onChange={(e)=> pChute.setChutar(e.target.value)}
+                onChange={(e) => pChute.setChutar(e.target.value)}
                 value={pChute.chutar}
                 disabled={chuteInativo}
             />

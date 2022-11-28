@@ -13,17 +13,16 @@ export default function Letras(props) {
 
     function jogada(letra) {
         pLetras.setLetrasEscolhidas([...pLetras.letrasEscolhidas, letra])
-        const listaPalavras = pLetras.padraoLetras(pLetras.palavra).split('')
+        const listaPalavras = pLetras.padronizarLetras(pLetras.palavra).split('')
         const acerto = listaPalavras.indexOf(letra) !== -1
         const palavraOcultaLista = pLetras.underline.split('')
         const palavraOcultaNova = acerto ? revelarLetras(letra, listaPalavras, palavraOcultaLista).join('') : pLetras.underline
         if (acerto) {
             pLetras.setUnderline(palavraOcultaNova)
         } else {
-            const maxErros = 6
             const novoErro = pLetras.erros + 1
             pLetras.setErros(novoErro)
-            if (novoErro === maxErros) {
+            if (novoErro === pLetras.erroLimite) {
                 pLetras.setUnderline(pLetras.palavra)
                 pLetras.setComeco(false)
             }
