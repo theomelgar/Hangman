@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export default function Letras(props) {
+    //TRANSFORMA AS LETRAS EM UPPERCASE PARA VISUALIZAÇÃO
     const pLetras = props.letras
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     const letras = alfabeto.map((l) => (
@@ -10,25 +11,26 @@ export default function Letras(props) {
             bloqueada: pLetras.letrasEscolhidas.includes(l),
             jogada: () => jogada(l)
         }))
-
+    //RODADA
     function jogada(letra) {
         pLetras.setLetrasEscolhidas([...pLetras.letrasEscolhidas, letra])
         const listaPalavras = pLetras.padronizarLetras(pLetras.palavra).split('')
         const acerto = listaPalavras.indexOf(letra) !== -1
         const palavraOcultaLista = pLetras.underline.split('')
-        const palavraOcultaNova = acerto ? revelarLetras(letra, listaPalavras, palavraOcultaLista).join('') : pLetras.underline
+        const novaPalavraOculta = acerto ? revelarLetras(letra, listaPalavras, palavraOcultaLista).join('') : pLetras.underline
         if (acerto) {
-            pLetras.setUnderline(palavraOcultaNova)
+            pLetras.setUnderline(novaPalavraOculta)
         } else {
-            const novoErro = pLetras.erros + 1
-            pLetras.setErros(novoErro)
-            if (novoErro === pLetras.erroLimite) {
+            const errado = pLetras.erros + 1
+            pLetras.setErros(errado)
+            if (errado === pLetras.erroLimite) {
                 pLetras.setUnderline(pLetras.palavra)
                 pLetras.setComeco(false)
             }
         }
-        winCondition(palavraOcultaNova)
+        winCondition(novaPalavraOculta)
     }
+    //REVELA A LETRA
     function revelarLetras(letra, palavraLista, palavraListaOculta) {
         while (palavraLista.indexOf(letra) !== -1) {
             const index = palavraLista.indexOf(letra)
@@ -38,8 +40,7 @@ export default function Letras(props) {
         }
         return palavraListaOculta;
     }
-
-
+    //VERIFICA VITORIA
     function winCondition(oculta) {
         if (oculta === pLetras.palavra) {
             pLetras.setUnderline(pLetras.palavra)
@@ -65,6 +66,7 @@ export default function Letras(props) {
         </LetrasDiv>
     )
 }
+//ESTILOS
 const LetrasDiv = styled.div`
     display: flex;
     flex-wrap: wrap;

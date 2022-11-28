@@ -3,7 +3,7 @@ import styled from "styled-components"
 export default function Chute(props) {
     const pChute = props.chute
     const chuteInativo = pChute.underline === pChute.palavra;
-
+    //VERIFICA SE ACERTOU
     function verifica() {
         const palavraSelecionada = pChute.padronizarLetras(pChute.palavra).toUpperCase()
         const palavraChute = pChute.padronizarLetras(pChute.chutar).toUpperCase()
@@ -31,7 +31,7 @@ export default function Chute(props) {
         </ChuteDiv>
     )
 }
-
+//ESTILOS
 const ChuteDiv = styled.div`
     display: flex;
     justify-content: center;

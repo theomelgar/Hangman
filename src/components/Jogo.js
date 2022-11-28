@@ -4,17 +4,20 @@ import styled from "styled-components"
 
 export default function Jogo(props) {
     const pJogo = props.jogo
+    //ESCOLHA ALEATORIA DA PALAVRA NOVA
     function escolherPalavra() {
         const nova = palavras[Math.floor(Math.random() * palavras.length)]
         pJogo.setPalavra(nova)
         quantidadeUnderlines(nova)
         inicioJogo()
     }
+    //CRIANDO A PALAVRA OCULTA
     function quantidadeUnderlines(palavra) {
         const palavraOculta = palavra.split("").map(() => "_")
         pJogo.setUnderline(palavraOculta.join(""))
         return palavraOculta
     }
+    //SETSTATE DE NOVO JOGO | FUNCIONA COMO RESET
     function inicioJogo() {
         pJogo.setErros(0)
         pJogo.setComeco(true)
@@ -22,6 +25,7 @@ export default function Jogo(props) {
         pJogo.setChutar("")
         pJogo.setFim(false)
     }
+    //DEFININDO DIVS DAS PALAVRAS REVELADAS
     const jogando = (
         <Jogando
             data-test="word"
@@ -30,22 +34,23 @@ export default function Jogo(props) {
         </Jogando>
     );
 
-    const certo = (
-        <Certo
+    const acertou = (
+        <Acertou
             data-test="word"
             data-answer={pJogo.palavra}>
             {pJogo.underline}
-        </Certo>
+        </Acertou>
     );
 
-    const errado = (
-        <Errado
+    const errou = (
+        <Errou
             data-test="word"
             data-answer={pJogo.palavra}>
             {pJogo.underline}
-        </Errado>
+        </Errou>
     );
-    const palavraCorreta = pJogo.erros === pJogo.erroLimite ? errado : certo
+    //VERIFICACAO DE RODADA
+    const palavraCorreta = pJogo.erros === pJogo.erroLimite ? errou : acertou
     const acabou = pJogo.palavra === pJogo.underline ? palavraCorreta : jogando
     return (
         <>
@@ -57,7 +62,7 @@ export default function Jogo(props) {
         </>
     )
 }
-
+//ESTILOS
 const Layout = styled.div`
     display: flex;
     justify-content:center;
@@ -145,13 +150,13 @@ const Jogando = styled.div`
     font-weight: 700;
     letter-spacing: 4px;
 `
-const Certo = styled.div`
+const Acertou = styled.div`
     font-size: 50px;
     font-weight: 700;
     letter-spacing: 4px;
     color: green;
 `
-const Errado = styled.div`
+const Errou = styled.div`
     font-size: 50px;
     font-weight: 700;
     letter-spacing: 4px;
