@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
 export default function Chute(props) {
-
+    const pChute = props.chute
     function chutarPalavra(e) {
-        let chute=props.chute.setChutar(e.target.value);
+        let chute=pChute.setChutar(e.target.value);
         verifica(chute)
     }
     function verifica(chute){
@@ -11,14 +11,14 @@ export default function Chute(props) {
             props.chutar.setComeco(false)
         }
     }
-    const chuteInativo = props.chute.underline === props.chute.palavra;
+    const chuteInativo = pChute.underline === pChute.palavra;
     return (
         <ChuteDiv>
             <span>Já sei a palavra!</span>
             <input
                 type="text"
                 onChange={chutarPalavra}
-                value={props.chute.chutar}
+                value={pChute.chutar}
                 disabled={chuteInativo}
             />
             <button onClick={chutarPalavra}>Chutar</button>

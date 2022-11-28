@@ -26,24 +26,24 @@ export default function Jogo(props) {
     const jogando = (
         <Jogando
             data-test="word"
-            data-answer={props.jogo.palavra}>
-            {props.jogo.palavraEscondida}
+            data-answer={pJogo.palavra}>
+            {pJogo.underline}
         </Jogando>
     );
 
     const certo = (
         <Certo
             data-test="word"
-            data-answer={props.jogo.palavra}>
-            {props.jogo.palavraEscondida}
+            data-answer={pJogo.palavra}>
+            {pJogo.underline}
         </Certo>
     );
 
     const errado = (
         <Errado
             data-test="word"
-            data-answer={props.jogo.palavra}>
-            {props.jogo.palavraEscondida}
+            data-answer={pJogo.palavra}>
+            {pJogo.underline}
         </Errado>
     );
     const palavraCorreta = pJogo.erros === errosMax ? errado : certo
@@ -53,9 +53,9 @@ export default function Jogo(props) {
             <Layout>
                 <ImgForca><img src={pJogo.forca[pJogo.erros]} alt="forca" /></ImgForca>
                 <Butao onClick={escolherPalavra}>Escolher Palavra</Butao>
-                <Underlines>{pJogo.underline}</Underlines>
+                <Underlines>{acabou}</Underlines>
                 {pJogo.palavra}
-                {acabou}
+                
             </Layout>
         </>
     )

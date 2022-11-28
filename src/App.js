@@ -18,7 +18,7 @@ function App() {
     return palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, "");
   }
   const forca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
-  const [erros, setErros] = useState(3)
+  const [erros, setErros] = useState(0)
   const [palavra, setPalavra] = useState("")
   const [chutar, setChutar] = useState("")
   const [letrasEscolhidas, setLetrasEscolhidas] = useState([])
