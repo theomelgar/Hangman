@@ -1,24 +1,27 @@
 import styled from "styled-components"
-import { useState } from "react"
 
 export default function Chute(props){
-    const [input,setInput] = useState("")
-    function chutarPalavra() {
-        setChutar(props.Chute)
-        setInput("")
+
+    function chutarPalavra(e) {
+        props.chute.setChutar(e.target.value);
+        props.chute.setChutar("")
     }
     return(
-        <chuteDiv>
+        <div>
         <span>Já sei a palavra!</span>
         <input
                 type="text"
                 placeholder=""
-                onChange={(e) => setInput(e.target.value)}
-                value={input}
-            />/>
-        <buttonChutar onClick={chutarPalavra}>Chutar</buttonChutar>
-        </chuteDiv>
+                onChange={chutarPalavra}
+                value={props.chute.chutar}
+            />
+        <button onClick={chutarPalavra}>Chutar</button>
+        </div>
             
            
     )
 }
+
+// const chuteDiv=styled.div`
+
+// `

@@ -1,11 +1,12 @@
 import styled from "styled-components"
+
 export default function Letras(props) {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     const letras = alfabeto.map((l) => (
         {
-            letra: l.toUpperCase(),
-            bloqueada: props.letras.LetrasEscolhidas.include(l)
+            letra: l.toUpperCase()
         }))
+        
     return (
         <LetrasDiv>
             {letras.map((letra) =>{

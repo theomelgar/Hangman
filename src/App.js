@@ -21,7 +21,7 @@ function App() {
   const [erros, setErros] = useState(0)
   const [palavra, setPalavrva] = useState("")
   const [chutar, setChutar] = useState("")
-  const [letrasEscolhidas, setLetrasEscolhidas] = useState(false)
+  const [letrasEscolhidas, setLetrasEscolhidas] = useState([])
   const [underline, setUnderline] = useState("")
   const [block, setBlock] = useState(true)
   const [comeco, setComeco] = useState(false)
@@ -36,9 +36,7 @@ function App() {
     underline, setUnderline,
     setLetrasEscolhidas,
     fim, setFim,
-    setComeco,
     setChutar,
-    setLetrasEscolhidas
   }
   const letras = {
     letrasEscolhidas, setLetrasEscolhidas,

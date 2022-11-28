@@ -1,17 +1,19 @@
-import React, { useState } from "react"
 import palavras from '../palavras.js';
 import styled from "styled-components"
 
 
 export default function Jogo(props) {
-    let erros = 4
+    function escolherPalavra(){
+        props.jogo.setPalavra("nova")
+    }
 
     return (
         <>
             <Layout>
-                <ImgForca><img src={props.forca[erros]} /></ImgForca>
-                <Butao>Escolher Palavra</Butao>
+                <ImgForca><ImgForca src={props.jogo.estagio} alt="forca" /></ImgForca>
+                <Butao onClick={escolherPalavra}>Escolher Palavra</Butao>
                 <Underlines></Underlines>
+                <div>{props.jogo.palavra}</div>
             </Layout>
         </>
     )
