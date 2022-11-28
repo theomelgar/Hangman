@@ -25,8 +25,9 @@ export default function Chute(props) {
                 onChange={(e) => pChute.setChutar(e.target.value)}
                 value={pChute.chutar}
                 disabled={chuteInativo}
+                data-test="guess-input"
             />
-            <button onClick={verifica} disabled={chuteInativo}>Chutar</button>
+            <button onClick={verifica} disabled={chuteInativo} data-test="guess-button">Chutar</button>
         </ChuteDiv>
     )
 }

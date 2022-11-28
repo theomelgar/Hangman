@@ -56,6 +56,7 @@ export default function Letras(props) {
                         key={letra.letra}
                         onClick={letra.jogada}
                         disabled={letraInativa}
+                        data-test="letter"
                     >
                     {letra.letra}
                     </LetraButao>

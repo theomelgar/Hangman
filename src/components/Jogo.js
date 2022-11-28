@@ -50,8 +50,8 @@ export default function Jogo(props) {
     return (
         <>
             <Layout>
-                <ImgForca><img src={pJogo.forca[pJogo.erros]} alt="forca" /></ImgForca>
-                <Butao onClick={escolherPalavra}>Escolher Palavra</Butao>
+                <ImgForca><img src={pJogo.forca[pJogo.erros]} alt="forca" data-test="game-image"/></ImgForca>
+                <Butao onClick={escolherPalavra} data-test="choose-word">Escolher Palavra</Butao>
                 <Underlines>{acabou}</Underlines>
                 {pJogo.palavra}
                 
