@@ -1,27 +1,30 @@
 import styled from "styled-components"
 
 export default function Letras(props) {
+    const letraSelecionada = props.letras.letrasEscolhida
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     const letras = alfabeto.map((l) => (
         {
-            letra: l.toUpperCase()
+            key: l,
+            letra: l.toUpperCase(),
+            bloqueada:letraSelecionada
         }))
-        
+
     return (
         <LetrasDiv>
-            {letras.map((letra) =>{
+            {letras.map((letra) => {
                 const letraInativa = !(props.letras.fim) ? true : letra.bloqueada;
-                return(
+                return (
                     <LetraButao
                         data-test="letter"
                         key={letra.letra}
                         onClick={letra.jogada}
-                        bloqueada={letraInativa}
+                        disabled={letraInativa}
                     >
                         {letra.letra}
                     </LetraButao>
                 )
-                })}
+            })}
         </LetrasDiv>
     )
 }
@@ -44,6 +47,7 @@ const LetrasDiv = styled.div`
 `;
 
 const LetraButao = styled.button`
+    cursor: pointer;
     width: 40px;
     height: 40px;
     margin: 6px;
@@ -52,19 +56,19 @@ const LetraButao = styled.button`
     font-weight: 700;
     align-items: center;
     text-align: center;
+    border-radius: 3px;
     background: #e1ecf4;
     border: 1px solid #7aa7c7;
-    border-radius: 3px;
-    cursor: pointer;
+
     &:disabled{
-        color: #798a9f;
-        background: #9faab5;
         border: 1px solid #7aa7c7;
+        color: #798a9f;
         cursor: default;
+        background: #9faab5;
     }
     @media (max-width: 450px) {
         margin: 5px;
-        width: 45px;
         height: 45px;
+        width: 45px;
     }
 `;

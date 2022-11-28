@@ -6,11 +6,11 @@ export default function Jogo(props) {
     function escolherPalavra(){
         props.jogo.setPalavra("nova")
     }
-
+    props.jogo.setErros(2)
     return (
         <>
             <Layout>
-                <ImgForca><ImgForca src={props.jogo.estagio} alt="forca" /></ImgForca>
+                <ImgForca><img src={props.jogo.forca[props.jogo.erros]} alt="forca" /></ImgForca> 
                 <Butao onClick={escolherPalavra}>Escolher Palavra</Butao>
                 <Underlines></Underlines>
                 <div>{props.jogo.palavra}</div>

@@ -4,14 +4,12 @@ export default function Chute(props){
 
     function chutarPalavra(e) {
         props.chute.setChutar(e.target.value);
-        props.chute.setChutar("")
     }
     return(
         <div>
         <span>Já sei a palavra!</span>
         <input
                 type="text"
-                placeholder=""
                 onChange={chutarPalavra}
                 value={props.chute.chutar}
             />

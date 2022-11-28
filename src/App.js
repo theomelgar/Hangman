@@ -29,7 +29,7 @@ function App() {
 
 
   const jogo = {
-    estagio: forca[erros],
+    forca,
     erros, setErros,
     palavra, setPalavrva,
     comeco, setComeco,
