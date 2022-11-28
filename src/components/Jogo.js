@@ -65,9 +65,9 @@ const Layout = styled.div`
     width: 100%;
     height: 600px;
     position: relative;
-    @media (max-width: 1100px){
+    @media (max-width: 800px){
         width: 100%;
-        height: 400px;
+        height: 430px;
         margin:  0 14%;
     }
 `
@@ -80,7 +80,7 @@ const ImgForca = styled.div`
         width: 400px;
         height: 466.67px;
     }
-    @media (max-width:1100px) {
+    @media (max-width:800px) {
         left: 0;
         margin: 20px 0 ;
         img{
@@ -111,7 +111,7 @@ const Butao = styled.div`
     &:hover{
         cursor: pointer;
     }
-    @media (max-width:1100px) {
+    @media (max-width:800px) {
         position: absolute;
         right: auto;
         top: 10px;
@@ -133,9 +133,9 @@ const Underlines = styled.div`
     align-items: center;
     text-align: center;
     color: #000000;
-    @media (max-width:1100px){
+    @media (max-width:800px){
         font-size: 20px;
-        bottom: 0;
+        bottom: 5%;
         left:70px
     }
 
