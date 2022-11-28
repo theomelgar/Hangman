@@ -10,7 +10,6 @@ import forca6 from "./assets/forca6.png"
 import { useState } from "react"
 import Chute from "./components/Chute"
 import Letras from "./components/Letras"
-import styled from "styled-components"
 
 function App() {
   function padronizarLetras(palavra) {
@@ -56,14 +55,12 @@ function App() {
   }
   return (
 
-    <AppDiv>
+    <>
       <GLobalStyle />
       <Jogo jogo={jogo} />
       <Letras letras={letras}></Letras>
       <Chute chute={chute}></Chute>
-    </AppDiv>)
+    </>)
 }
-const AppDiv=styled.div`
-  width: 100%;
-`
-export default App;
+
+export default App

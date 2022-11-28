@@ -74,12 +74,9 @@ const LetrasDiv = styled.div`
     max-width: 680px;
     height: 100%;
     margin: 0px auto;
-    @media (max-width: 850px) {
-        width: 470px;
-    }
-    @media (max-width: 600px) {
+    @media (max-width: 1100px) {
         width: 100%;
-        max-width: 300px;
+        margin: 0 0;
     }
 `;
 
@@ -103,9 +100,7 @@ const LetraButao = styled.button`
         cursor: default;
         background: #9faab5;
     }
-    @media (max-width: 450px) {
+    @media (max-width: 1100px) {
         margin: 5px;
-        height: 45px;
-        width: 45px;
     }
 `;

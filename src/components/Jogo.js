@@ -52,9 +52,7 @@ export default function Jogo(props) {
             <Layout>
                 <ImgForca><img src={pJogo.forca[pJogo.erros]} alt="forca" data-test="game-image"/></ImgForca>
                 <Butao onClick={escolherPalavra} data-test="choose-word">Escolher Palavra</Butao>
-                <Underlines>{acabou}</Underlines>
-                {pJogo.palavra}
-                
+                <Underlines>{acabou}</Underlines>                
             </Layout>
         </>
     )
@@ -67,19 +65,28 @@ const Layout = styled.div`
     width: 100%;
     height: 600px;
     position: relative;
+    @media (max-width: 1100px){
+        width: 100%;
+        height: 400px;
+        margin:  0 14%;
+    }
 `
 
 const ImgForca = styled.div`
-position: absolute;
-left: 10%;
+    position: absolute;
+    left: 10%;
     img{
         margin: 64px 40%;
         width: 400px;
         height: 466.67px;
     }
-    @media (max-width:1000px) {
-        max-width:10px;
-        
+    @media (max-width:1100px) {
+        left: 0;
+        margin: 20px 0 ;
+        img{
+            width: 200px;
+            height: 100%;
+        }
     }
     `
 const Butao = styled.div`
@@ -104,7 +111,7 @@ const Butao = styled.div`
     &:hover{
         cursor: pointer;
     }
-    @media (max-width:1000px) {
+    @media (max-width:1100px) {
         position: absolute;
         right: auto;
         top: 10px;
@@ -126,6 +133,11 @@ const Underlines = styled.div`
     align-items: center;
     text-align: center;
     color: #000000;
+    @media (max-width:1100px){
+        font-size: 20px;
+        bottom: 0;
+        left:70px
+    }
 
 `
 const Jogando = styled.div`
