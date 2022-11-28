@@ -36,7 +36,7 @@ const LetrasDiv = styled.div`
     width: 80%;
     max-width: 680px;
     height: 100%;
-    margin: 0 auto;
+    margin: 0px auto;
     @media (max-width: 850px) {
         width: 470px;
     }

@@ -6,7 +6,7 @@ export default function Jogo(props) {
     function escolherPalavra(){
         props.jogo.setPalavra("nova")
     }
-    props.jogo.setErros(2)
+    props.jogo.setErros(6)
     return (
         <>
             <Layout>
@@ -21,23 +21,25 @@ export default function Jogo(props) {
 
 const Layout = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     box-sizing: border-box;
+    height: 600px;
 `
 
 const ImgForca = styled.div`
     img{
-        width: 700px;
-        height: 650px;
-        margin-top: 10%;
-        margin-left: 30%;
+        margin: 64px 40%;
         width: 400px;
         height: 466.67px;
     }
+    @media (max-width:1000px) {
+        max-width:10px;
+        
+    }
     `
 const Butao = styled.div`
-    position: fixed;
-    right: 30%;
+    position: absolute;
+    right: 25%;
     top: 90px;
     width: 200px;
     height: 60px;
@@ -53,8 +55,15 @@ const Butao = styled.div`
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+    z-index: 1;
     &:hover{
         cursor: pointer;
+    }
+    @media (max-width:1000px) {
+        position: absolute;
+        right: auto;
+        top: 10px;
+        z-index: 4;
     }
 `
 const Underlines = styled.div`
